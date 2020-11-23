@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link"
+       *ngFor="let lesson of lessons"
+       [ngClass]="{'active': lesson._id === lessonId}"
+       href="/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{lesson._id}}/topics">
+      {{lesson.title}}
+    </a>
+  </li>
+</ul>
