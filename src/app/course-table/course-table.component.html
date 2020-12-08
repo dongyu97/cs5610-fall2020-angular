@@ -1,10 +1,17 @@
 <div class="container">
   <h1>Courses</h1>
+
+
   <ul class="list-group">
     <li *ngFor="let course of courses">
       <a href="courses/{{course._id}}/modules">
       {{course.title}}
       </a>
+      <a class="float-right"
+         routerLink="/courses/{{course._id}}/quizzes">
+        Quizzes
+      </a>
+
     </li>
 
   </ul>
