@@ -1,0 +1,57 @@
+<div class="m-2 p-2">
+  <h4>
+    <div>
+      {{question.question}}
+      <span [hidden]="!graded">
+
+        <fa-icon [hidden]="answer === this.question.correct" [icon]="faTimes" class="pull-right"></fa-icon>
+
+
+        <fa-icon [hidden]="answer !== this.question.correct" [icon]="faCheck" class="pull-right"></fa-icon>
+
+      </span>
+    </div>
+  </h4>
+
+  <ul class="list-group m-2">
+    <li class="list-group-item
+    {{graded && 'false' === answer && 'true' === question.correct? 'list-group-item-success': ''}}
+    {{graded && 'true' === answer && 'true' !== question.correct? 'list-group-item-danger': ''}}
+    {{graded && 'true' === answer && 'true' === question.correct? 'list-group-item-success': ''}}">
+      <label>
+        <input [(ngModel)]="answer" type="radio" value="true" name="{{question._id}}">
+        True
+      </label>
+      <span class="float-right" [hidden]="!graded">
+          <fa-icon [hidden]="'true' === question.correct" [icon]="faTimes"></fa-icon>
+        <fa-icon [hidden]="'false' === question.correct" [icon]="faCheck"></fa-icon>
+
+      </span>
+    </li>
+    <li class="list-group-item
+    {{graded && 'true' === answer && 'false' === question.correct? 'list-group-item-success': ''}}
+    {{graded && 'false' === answer && 'false' !== question.correct? 'list-group-item-danger': ''}}
+    {{graded && 'false' === answer && 'false' === question.correct? 'list-group-item-success': ''}}">
+      <label>
+        <input [(ngModel)]="answer" type="radio" value="false" name="{{question._id}}">
+        False
+      </label>
+      <span class="float-right" [hidden]="!graded">
+        <fa-icon [hidden]="'true' === question.correct" [icon]="faCheck" ></fa-icon>
+        <fa-icon [hidden]="'false' === question.correct" [icon]="faTimes" ></fa-icon>
+
+      </span>
+    </li>
+  </ul>
+  <br>
+  <div>
+    Your Answer: <span [hidden]="graded === false">{{answer}}</span>
+  </div>
+  <br>
+  <div>
+    <button (click)="submitAnswer()" class="btn btn-primary float-right">
+      Grade
+    </button>
+  </div>
+  <br>
+</div>

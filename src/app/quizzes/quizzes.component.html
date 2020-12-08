@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="text-center">Quizzes</h2>
+  <div *ngFor="let quiz of quizzes" class="card m-3">
+    <div class="card-header">
+      <p>
+        {{quiz.title}}
+      </p>
+      <a class="btn btn-primary" routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
+        Start
+      </a>
+    </div>
+  </div>
+</div>
